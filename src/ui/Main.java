@@ -4,6 +4,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 
 public class Main extends Application {
 
@@ -14,7 +17,23 @@ public class Main extends Application {
         btn.setOnAction(t->System.out.println("Hello World"));
 
         StackPane root = new StackPane();
-        root.getChildren().add(btn);
+        //root.getChildren().add(btn);
+
+
+        //MenuBar
+        MenuBar menuBar = new MenuBar();
+        Menu file = new Menu("File");
+        Menu edit = new Menu("Edit");
+
+        //MenuItems
+        MenuItem something =  new MenuItem("new");
+        MenuItem dummy = new MenuItem("dummy");
+        file.getItems().addAll(something);
+
+        menuBar.getMenus().addAll(file);
+
+        root.getChildren().add(menuBar);
+
 
         Scene scene = new Scene(root, 300, 250);
 
