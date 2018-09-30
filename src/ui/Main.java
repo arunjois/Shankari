@@ -1,45 +1,30 @@
 package ui;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
 
+
+import ui.FileMenu;
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(t->System.out.println("Hello World"));
 
-        StackPane root = new StackPane();
+        BorderPane root = new BorderPane();
         //root.getChildren().add(btn);
+        FileMenu f = new FileMenu();
+       // menuBar.getMenus().addAll(f.getMenuBar());
 
-
-        //MenuBar
-        MenuBar menuBar = new MenuBar();
-        Menu file = new Menu("File");
-        Menu edit = new Menu("Edit");
-
-        //MenuItems
-        MenuItem something =  new MenuItem("new");
-        MenuItem dummy = new MenuItem("dummy");
-        file.getItems().addAll(something);
-
-        menuBar.getMenus().addAll(file);
-
-        root.getChildren().add(menuBar);
+        //root.getChildren().add(f.getMenuBar());
 
 
         Scene scene = new Scene(root, 300, 250);
-
+        root.setTop(f.getMenuBar());
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
+        primaryStage.setMaximized(true);
     }
     public static void main(String[] args) {
         launch(args);
