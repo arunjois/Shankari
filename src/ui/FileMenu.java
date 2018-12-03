@@ -29,6 +29,7 @@ public class FileMenu {
 
         // Add Menus to the MenuBar
         menuBar.getMenus().addAll(fileMenu, editMenu, helpMenu);
+        menuBar.useSystemMenuBarProperty().set(true);
         return menuBar;
     }
 }

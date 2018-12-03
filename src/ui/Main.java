@@ -5,7 +5,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 
-import ui.FileMenu;
 public class Main extends Application {
 
     @Override
@@ -14,6 +13,7 @@ public class Main extends Application {
         BorderPane root = new BorderPane();
         //root.getChildren().add(btn);
         FileMenu f = new FileMenu();
+        ChartTab ct = new ChartTab();
        // menuBar.getMenus().addAll(f.getMenuBar());
 
         //root.getChildren().add(f.getMenuBar());
@@ -21,6 +21,7 @@ public class Main extends Application {
 
         Scene scene = new Scene(root, 300, 250);
         root.setTop(f.getMenuBar());
+        root.setCenter(ct.getTab());
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
