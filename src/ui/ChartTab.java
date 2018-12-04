@@ -8,8 +8,11 @@ public class ChartTab {
         TabPane Horo = new TabPane();
         TabPane Details = new TabPane();
         Tab Charts =  new Tab("Charts");
-        Charts.setContent();
-        Details.getTabs().addAll(new Tab("Details"));
+        Tab Info = new Tab("Details");
+        StackPane myPane = new StackPane();
+        myPane.getChildren().add(getnode());
+        Charts.setContent(myPane);
+        Details.getTabs().addAll(Info);
         Charts.setContent(Details);
 
         Horo.getTabs().addAll(Charts);
@@ -18,5 +21,10 @@ public class ChartTab {
 
 
         return Horo;
+    }
+    public Node getnode() {
+        StackPane node = new StackPane();
+
+        return node;
     }
 }
