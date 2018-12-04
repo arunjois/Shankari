@@ -8,6 +8,7 @@ public class ChartTab {
         TabPane Horo = new TabPane();
         TabPane Details = new TabPane();
         Tab Charts =  new Tab("Charts");
+        Charts.setContent();
         Details.getTabs().addAll(new Tab("Details"));
         Charts.setContent(Details);
 
