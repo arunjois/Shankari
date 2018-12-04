@@ -5,10 +5,17 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.Node;
 public class ChartTab {
     public TabPane getTab () {
-        TabPane charTab =  new TabPane();
-        Tab tab =  new Tab();
-        StackPane pane = new StackPane();
-        charTab.getTabs().add(tab);
-        return charTab;
+        TabPane Horo = new TabPane();
+        TabPane Details = new TabPane();
+        Tab Charts =  new Tab("Charts");
+        Details.getTabs().addAll(new Tab("Details"));
+        Charts.setContent(Details);
+
+        Horo.getTabs().addAll(Charts);
+
+
+
+
+        return Horo;
     }
 }
