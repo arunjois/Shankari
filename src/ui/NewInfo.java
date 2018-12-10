@@ -8,7 +8,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputControl;
 import javafx.geometry.Insets;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 public class NewInfo {
     public static void takeInfo(){
         Stage info = new Stage();
@@ -28,20 +31,61 @@ public class NewInfo {
         grid.add(date,0,0);
 
         TextField dd = new TextField();
+        dd.setId("dd");
+        dd.setPromptText("dd");
         dd.setStyle("-fx-pref-width:3em;-fx-pref-height:2em;");
         grid.add(dd,1,0,1,1);
 
         TextField mm = new TextField();
+        mm.setPromptText("mm");
         mm.setStyle("-fx-pref-width:3em;-fx-pref-height:2em;");
         grid.add(mm,2,0,1,1);
 
         TextField yyyy = new TextField();
-        yyyy.setStyle("-fx-pref-width:4em;-fx-pref-height:2em;");
+        yyyy.setPromptText("yyyy");
+        yyyy.setStyle("-fx-pref-width:3.8em;-fx-pref-height:2em;");
         grid.add(yyyy,3,0,1,1);
 
+        Label time = new Label("Time");
+        grid.add(time,0,1,1,1);
+
+        TextField hrs = new TextField();
+        hrs.setPromptText("HH");
+        hrs.setStyle("-fx-pref-width:3em;-fx-pref-height:2em;");
+        grid.add(hrs,1,1,1,1);
+
+        TextField min = new TextField();
+        min.setPromptText("MM");
+        min.setStyle("-fx-pref-width:3em;-fx-pref-height:2em;");
+        grid.add(min,2,1,1,1);
+
+        Label country =  new Label("Country:");
+        grid.add(country,0,3,1,1);
+
+        ObservableList<String> options =
+                FXCollections.observableArrayList(
+                       "India" ,
+                       "United States of America",
+                        "United Kingdom"
+                );
+        ComboBox<String> countryList = new ComboBox<String>(options);
+        grid.add(countryList,1,3,4,1);
+
+        Label place = new Label("Place:");
+        grid.add(place,0,4,1,1);
+
+        ComboBox<String> placeList = new ComboBox<>(options);
+        grid.add(placeList,1,4,4,1);
+
+        Button okay = new Button("OKAY");
+        grid.add(okay,2,5,1,1);
+        okay.setOnAction(event->loadnewInfo());
 
         Scene scene = new Scene(grid);
         info.setScene(scene);
         info.showAndWait();
+    }
+    public static void loadnewInfo(){
+        
     }
 }
