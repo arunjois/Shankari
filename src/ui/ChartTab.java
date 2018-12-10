@@ -6,7 +6,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.geometry.*;
+import javafx.geometry.Pos;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.Node;
 public class ChartTab {
@@ -18,18 +19,14 @@ public class ChartTab {
         TabPane Details = new TabPane();            //Child TabPane
         Tab Charts =  new Tab("Charts");        //Parent Tab
         Tab Info = new Tab("Details");          //Child Tab
-        StackPane myPane = new StackPane();
-        myPane.getChildren().add(getnode());
+        GridPane myPane = new GridPane();
+        myPane.setPadding(new Insets(0, 10, 0, 10));
+        myPane.add(getnode(),1,0);
         //Charts.setContent(myPane);
         Info.setContent(myPane);
         Details.getTabs().addAll(Info);
         Charts.setContent(Details);
-
         Horo.getTabs().addAll(Charts);
-
-
-
-
         return Horo;
     }
     public Node getnode() {
@@ -40,21 +37,9 @@ public class ChartTab {
         // Get the graphics context of the canvas
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        // Draw a Text
-        //gc.strokeText("Hello Canvas", 150, 100);
-
-        // Create the Pane
         Pane root = new Pane();
-        // Set the Style-properties of the Pane
-		/*root.setStyle("-fx-padding: 10;" +
-		  "-fx-border-style: solid inside;" +
-		  "-fx-border-width: 2;" +
-		  "-fx-border-insets: 5;" +
-		  "-fx-border-radius: 5;" +
-		  "-fx-border-color: blue;");
-		  */
-        // Add the Canvas to the Pane
 
+        //Create the line segments for charts
         gc.strokeRect(10,10,780,470);     //Rectangle Box
         gc.strokeLine(10,115,790,115);    //Line Stroke
         gc.strokeLine(10,370,790,370);
@@ -65,16 +50,8 @@ public class ChartTab {
         gc.strokeLine(150,10,150,480);
         gc.strokeLine(650,10,650,480);     //Vertical Line Long
         final Label title = new Label("Some text");
-        //title.setMaxWidth(Double.MAX_VALUE);
         title.setAlignment(Pos.CENTER);
-
-
-
-
-
         root.getChildren().add(canvas);
-
-
         return (Node)root;
     }
 }
