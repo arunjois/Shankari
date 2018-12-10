@@ -24,16 +24,19 @@ public class NewInfo {
         grid.setPadding(new Insets(0, 10, 0, 10));
 
 
-        Label date = new Label("Date");
+        Label date = new Label("Date:");
         grid.add(date,0,0);
 
         TextField dd = new TextField();
+        dd.setStyle("-fx-pref-width:3em;-fx-pref-height:2em;");
         grid.add(dd,1,0,1,1);
 
         TextField mm = new TextField();
+        mm.setStyle("-fx-pref-width:3em;-fx-pref-height:2em;");
         grid.add(mm,2,0,1,1);
 
         TextField yyyy = new TextField();
+        yyyy.setStyle("-fx-pref-width:4em;-fx-pref-height:2em;");
         grid.add(yyyy,3,0,1,1);
 
 

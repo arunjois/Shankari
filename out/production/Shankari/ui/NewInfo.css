@@ -1,0 +1,4 @@
+.dd .mm .yyyy {
+    -fx-pref-width:3em;
+    -fx-pref-height:3em;
+}
