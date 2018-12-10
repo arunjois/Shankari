@@ -49,8 +49,8 @@ public class ChartTab {
         gc.strokeLine(385,370,385,480);   //Vertical Bottom Line
         gc.strokeLine(150,10,150,480);
         gc.strokeLine(650,10,650,480);     //Vertical Line Long
-        final Label title = new Label("Some text");
-        title.setAlignment(Pos.CENTER);
+        //final Label title = new Label("Some text");
+        //title.setAlignment(Pos.CENTER);
         root.getChildren().add(canvas);
         return (Node)root;
     }

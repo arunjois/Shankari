@@ -23,6 +23,13 @@ public class FileMenu {
         MenuItem copyItem = new MenuItem("Copy");
         MenuItem pasteItem = new MenuItem("Paste");
 
+        //Actions on Menus
+        newItem.setOnAction(event->NewInfo.takeInfo());
+
+
+
+
+
         // Add menuItems to the Menus
         fileMenu.getItems().addAll(newItem, openFileItem, exitItem);
         editMenu.getItems().addAll(copyItem, pasteItem);
