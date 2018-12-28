@@ -8,7 +8,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputControl;
 import javafx.geometry.Insets;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -74,18 +73,31 @@ public class NewInfo {
         Label place = new Label("Place:");
         grid.add(place,0,4,1,1);
 
-        ComboBox<String> placeList = new ComboBox<>(options);
+        ComboBox<String> placeList = new ComboBox<String>(options);
         grid.add(placeList,1,4,4,1);
 
-        Button okay = new Button("OKAY");
+        Button okay = new Button("OK");
         grid.add(okay,2,5,1,1);
-        okay.setOnAction(event->loadnewInfo());
+        okay.setOnAction(event->loadnewInfo(dd,mm,yyyy,hrs,min,countryList,placeList));
 
         Scene scene = new Scene(grid);
         info.setScene(scene);
         info.showAndWait();
     }
-    public static void loadnewInfo(){
-        
+    public static void loadnewInfo(TextField dd,TextField mm, TextField yyyy,
+                                   TextField hrs, TextField min,
+                                   ComboBox country,ComboBox place){
+        double day = Double.valueOf(dd.getText());
+        double mon  = Double.valueOf(mm.getText());
+        double year = Double.valueOf(yyyy.getText());
+        double hours = Double.valueOf(hrs.getText());
+        double mins = Double.valueOf(min.getText());
+        String cou = (String)country.getValue();
+        String location = (String)place.getValue();
+
+
+
+
+
     }
 }
