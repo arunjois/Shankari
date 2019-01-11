@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.geometry.Insets;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import sql.Country;
 public class NewInfo {
     public static void takeInfo(){
         Stage info = new Stage();
@@ -60,20 +62,31 @@ public class NewInfo {
 
         Label country =  new Label("Country:");
         grid.add(country,0,3,1,1);
+        Country con = new Country();
+        ObservableList<String> observableList = FXCollections.observableList(Country.getCountryList());
 
         ObservableList<String> options =
                 FXCollections.observableArrayList(
-                       "India" ,
-                       "United States of America",
-                        "United Kingdom"
+                        observableList.sorted()
                 );
+        /*
+        * Set Action on Combo box
+         */
+        String c = new String();
         ComboBox<String> countryList = new ComboBox<String>(options);
         grid.add(countryList,1,3,4,1);
-
+        countryList.setOnAction(e->{
+            Country.getPlace(countryList.getSelectionModel().selectedItemProperty().getValue());
+            System.out.println(countryList.getSelectionModel().selectedItemProperty().getValue());
+        });
+        countryList.getSelectionModel().selectFirst();
         Label place = new Label("Place:");
         grid.add(place,0,4,1,1);
 
-        ComboBox<String> placeList = new ComboBox<String>(options);
+        String tmp = countryList.getSelectionModel().selectedItemProperty().getValue();
+        ComboBox<String> placeList = new ComboBox<String>(
+                FXCollections.observableArrayList(Country.getPlace(countryList.getSelectionModel().selectedItemProperty().getValue()))
+        );
         grid.add(placeList,1,4,4,1);
 
         Button okay = new Button("OK");
