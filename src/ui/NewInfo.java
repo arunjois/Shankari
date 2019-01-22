@@ -69,12 +69,13 @@ public class NewInfo {
                 FXCollections.observableArrayList(
                         observableList.sorted()
                 );
-        /*
-        * Set Action on Combo box
-         */
+
         String c = new String();
         ComboBox<String> countryList = new ComboBox<String>(options);
         grid.add(countryList,1,3,4,1);
+        /*
+         * Set Action on Combo box
+         */
         countryList.setOnAction(e->{
             Country.getPlace(countryList.getSelectionModel().selectedItemProperty().getValue());
             System.out.println(countryList.getSelectionModel().selectedItemProperty().getValue());

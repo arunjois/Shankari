@@ -25,8 +25,7 @@ public class FileMenu {
 
         //Actions on Menus
         newItem.setOnAction(event->NewInfo.takeInfo());
-
-
+        exitItem.setOnAction(event->System.exit(0));
 
 
 
