@@ -6,11 +6,11 @@ import java.sql.*;
 import java.util.StringJoiner;
 import java.util.List;
 import java.util.ArrayList;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import ui.NewInfo;
 public class  Country {
-    public static ObservableList placeList = FXCollections.observableArrayList();
+    public static ObservableList<String> placeList = FXCollections.observableArrayList();
     public static void main(String args[]) {
         Connection c = null;
         Statement stmt = null;

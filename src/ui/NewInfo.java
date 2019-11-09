@@ -1,4 +1,5 @@
 package ui;
+import javafx.event.EventHandler;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -11,6 +12,11 @@ import javafx.scene.control.TextField;
 import javafx.geometry.Insets;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.awt.event.ActionEvent;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import sql.Country;
 public class NewInfo {
@@ -51,12 +57,12 @@ public class NewInfo {
         grid.add(time,0,1,1,1);
 
         TextField hrs = new TextField();
-        hrs.setPromptText("HH");
+        hrs.setPromptText("hh");
         hrs.setStyle("-fx-pref-width:3em;-fx-pref-height:2em;");
         grid.add(hrs,1,1,1,1);
 
         TextField min = new TextField();
-        min.setPromptText("MM");
+        min.setPromptText("mm");
         min.setStyle("-fx-pref-width:3em;-fx-pref-height:2em;");
         grid.add(min,2,1,1,1);
 
@@ -70,24 +76,34 @@ public class NewInfo {
                         observableList.sorted()
                 );
 
-        String c = new String();
+        String c;
         ComboBox<String> countryList = new ComboBox<String>(options);
+        //countryList.setEditable(true);
         grid.add(countryList,1,3,4,1);
+        ObservableList<String> ireallydontknow = FXCollections.observableArrayList();
+        //String ireallydontknow = new String();
+        ComboBox<String> placeList = new ComboBox<>();
         /*
          * Set Action on Combo box
          */
         countryList.setOnAction(e->{
-            Country.getPlace(countryList.getSelectionModel().selectedItemProperty().getValue());
-            System.out.println(countryList.getSelectionModel().selectedItemProperty().getValue());
+            //ireallydontknow= Country.getPlace(countryList.getSelectionModel().selectedItemProperty().getValue());
+            //placeList.addItem(Country.getPlace(countryList.getSelectionModel().selectedItemProperty().getValue()));
+            /*
+            * A new thread should be place here to get place list
+            *
+            * */
+
         });
         countryList.getSelectionModel().selectFirst();
         Label place = new Label("Place:");
         grid.add(place,0,4,1,1);
 
         String tmp = countryList.getSelectionModel().selectedItemProperty().getValue();
-        ComboBox<String> placeList = new ComboBox<String>(
-                FXCollections.observableArrayList(Country.getPlace(countryList.getSelectionModel().selectedItemProperty().getValue()))
-        );
+        /*ComboBox<String> placeList = new ComboBox<String>(
+                FXCollections.observableArrayList(ireallydontknow)
+                //All this will need a rewrite
+        );*/
         grid.add(placeList,1,4,4,1);
 
         Button okay = new Button("OK");
@@ -112,6 +128,15 @@ public class NewInfo {
 
 
 
+
+    }
+}
+class GetPlaces implements Runnable {
+    String country;
+    GetPlaces(String s){
+        this.country=s;
+    }
+    public void run() {
 
     }
 }
