@@ -1,4 +1,5 @@
 package ui;
+import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Modality;
@@ -20,6 +21,10 @@ import java.util.concurrent.Executors;
 
 import sql.Country;
 public class NewInfo {
+  ComboBox<String> placeList = new ComboBox<>();
+  public void setPlaceList(ObservableList str) {
+    placeList = new ComboBox<String>(str);
+  }
   public static void takeInfo(){
     Stage info = new Stage();
     info.initModality(Modality.APPLICATION_MODAL);          //Refer Documentation
@@ -95,7 +100,8 @@ public class NewInfo {
       @Override
       public void handle(ActionEvent actionEvent) {
         String tmp = countryList.getSelectionModel().selectedItemProperty().getValue();
-        shit=new ComboBox<>(Country.getPlace(tmp));
+        NewInfo i = new NewInfo();
+        i.setPlaceList(Country.getPlace(tmp));
       }
     });
     countryList.getSelectionModel().selectFirst();

@@ -100,6 +100,7 @@ public class  Country {
                 i++;
 
             }
+            System.out.println(ar);
 
         }
         catch ( Exception e ) {
